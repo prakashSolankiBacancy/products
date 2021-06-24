@@ -1,0 +1,33 @@
+.login-container {
+    margin: auto;
+    width: 600px;
+    padding-top: 100px;
+
+    input {
+        border-bottom-color: black;
+    } 
+    .login-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+}
+
+.product-container {
+    width: max-content;
+    max-width: 50%;
+    margin: auto;
+}
+
+// .radio-group {
+//     display: flex;
+// }
+
+.product-action{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.secondary-content {
+    margin-top: 10px;
+}
