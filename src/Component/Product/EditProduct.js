@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css';
 import EditProductModal from './EditProductModal';
-import AddAndEdittProductContainer from '../../Container/AddAndEdittProductContainer';
 
 function EditProduct({product, editProduct}){
     const id = product && product.name.slice(0,2).concat('addMember', product.description.slice(0,2));  

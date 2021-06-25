@@ -31,3 +31,28 @@
 .secondary-content {
     margin-top: 10px;
 }
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-image {
+    img {
+        width: 250px !important;
+        height: 276px
+    }
+}
+
+
+.image-preview{
+  img {
+    height: 80px;
+    width: 80px;
+  }
+}
+
+.image-container{
+    display: flex;
+    justify-content: space-between;
+}

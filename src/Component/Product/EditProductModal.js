@@ -1,14 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function EditProductModal({product, editProduct}) {
     const [description, setDescription] = useState(product.description);
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
-    // const [file, setFile] = useState();
-    const [showError, setError] = useState(false);
+    const [file, setEncodedFile] = useState(product.encodedFile);
    
+    // Set file when user select the file in modal
+    const setFile = (file) => {
+        if(file) {
+            // Convert image into base64
+            var reader = new FileReader();
+            let base64String;
+            reader.onload = function () {
+                base64String = reader.result.replace("data:", "")
+                    .replace(/^.+,/, "");
+                setEncodedFile(base64String);
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
     const onClick = (event) => {
-        editProduct({id: product.id, name, description, price})
+        if(isFormValid()) {
+            editProduct({id: product.id, name, description, price, encodedFile: file})
+
+            // clear the form data
+            var modalElement = document.querySelector('#file');
+            modalElement.value = null;
+            setDescription(''); setName(''); setPrice('');setFile('')
+        }
+    }
+
+     //  Return true id form have valid data
+    const isFormValid = () => {
+        if(description !== '' && name !== '' && parseInt(price) > 0) {
+            return true
+        } 
+        return false;
     }
 
     return ( 
@@ -32,30 +61,33 @@ function EditProductModal({product, editProduct}) {
                 </div>
                 <div className="row">
                     <div class="group s6">      
-                        <input type="text" required />
+                        <input id="price" value={price} type="text" onChange={(e) => setPrice(e.target.value)} />
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Price</label>
                     </div>
                 </div>
-                {/* <div className="row">
-                    <div class="file-field input-field">
-                    <div class="btn">
-                        <span>Select File</span>
-                        <input type="file" />
-                        {/* <input type="file" onChange={(e) => setFile(e.target.files[0])}/> */}
-                    {/* </div> */}
-                    {/* <div class="file-path-wrapper">
-                         <input class="file-path validate" type="text" onChange={(e) => setFile(e.target.files[0])} />
-                    </div> */}
-
-                    {/* </div> */}
-                {/* </div> */} 
+                <div className="row">
+                    <div class="file-field input-field image-container">
+                        <div class="btn">
+                            <span>Select File</span>
+                            <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
+                            <div class="file-path-wrapper">
+                            <input  id='file' class="file-path validate" type="text" />
+                        </div>
+                        </div>
+                        
+                        <div className='image-preview'>
+                            <img src={`data:image/jpeg;base64,${file}`} />
+                        </div>
+                    </div>
+                </div> 
+                
                 <div className='right'>
                     <a className="waves-effect waves-light btn" style={{margin: '5px'}} onClick={onClick}>Add Product</a>
                     <a href="#!" className="modal-close btn">close</a>
                 </div>
-                { showError &&
+                { false &&
                     <div>
                         <a href="#!"><i className='material-icons red-text'>error</i></a> <span>Team already exits</span>
                     </div>

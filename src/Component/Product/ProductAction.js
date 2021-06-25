@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import Radio from '../UIComponent/Radio';
 
 function ProductAction({onFilterOrSearchChange}) {
-    const [radioButtons, setRedioButtons] = useState([
+    const [radioButtons, setRadioButtons] = useState([
         {name: 'name', checked: false },
         {name: 'description',  checked:false},
         {name: 'price', checked: false}
     ]);
 
+    // Handle radio input change event
     const onChange = (selectedValue) => {
         const updatedList = radioButtons.map((radio) => {
             if(radio.name === selectedValue) {
@@ -19,10 +20,11 @@ function ProductAction({onFilterOrSearchChange}) {
             }
         });
        
-        setRedioButtons(updatedList);
+        setRadioButtons(updatedList);
         onFilterOrSearchChange('radio', selectedValue)
     }
 
+    // Iterate the radio button array and return the JSX code
     const getRadioButtons = () => {
        return  radioButtons.map((radio) => {
             return(
@@ -33,6 +35,7 @@ function ProductAction({onFilterOrSearchChange}) {
         })
     }
 
+    // Handle search event while user searching over product display page
     const handleSearch = (event) => {
         onFilterOrSearchChange('search', event.target.value)
       }

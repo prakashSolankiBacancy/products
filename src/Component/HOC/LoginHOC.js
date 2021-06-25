@@ -4,9 +4,8 @@ import { AuthContext } from '../../Context/LoggedUserContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext);
-    const {  isAuthenticated } = authContext
-    console.log('isAuthenticated: ', isAuthenticated);
-
+    const {  isAuthenticated } = authContext;
+  
   return (
     <Route {...rest} render={props =>
       !isAuthenticated ? (

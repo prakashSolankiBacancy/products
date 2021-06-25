@@ -7,9 +7,11 @@ class AuthContextProvider extends Component {
     isAuthenticated: false,
     userObj:{},
   }
+
   setAuth = (isAuthenticated, userObj) => {
     this.setState({ isAuthenticated, userObj });
   }
+
   render() { 
     return (
       <AuthContext.Provider value={{...this.state, setAuth: this.setAuth}}>

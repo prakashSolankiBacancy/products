@@ -1,7 +1,6 @@
 import React from 'react';
 import "materialize-css/dist/css/materialize.min.css";
 import {
-  BrowserRouter as Router,
   Link
 } from "react-router-dom";
 
@@ -9,7 +8,6 @@ import {
 function Navigation() {
   return ( 
     <div>
-      {/* <Router> */}
         <nav className="#26a69a teal lighten-1">
           <div className="container">
             <div className="nav-wrapper">
@@ -23,7 +21,7 @@ function Navigation() {
                   <Link to="/">Login</Link>
                 </li>
                 <li>
-                  <Link > Add product</Link>
+                  <Link >Link1</Link>
                 </li>
                 <li>
                   <Link >Link2</Link>
@@ -34,8 +32,7 @@ function Navigation() {
               </ul>
             </div>
           </div>
-        </nav>  
-      {/* </Router>    */}
+        </nav>
     </div>
   )
 }

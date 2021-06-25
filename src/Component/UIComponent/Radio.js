@@ -1,7 +1,9 @@
 function Radio({option, onChange}) {
+
     const onRadioChange = (e) => {
         onChange(e.target.id)
     }
+
     return (
         <div>
             <p>
@@ -14,4 +16,5 @@ function Radio({option, onChange}) {
       );
    
 }
+
 export default Radio;

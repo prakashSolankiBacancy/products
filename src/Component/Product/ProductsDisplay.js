@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card';
+import Card from '../UIComponent/Card';
 const _ = require("lodash"); 
 
 class ProductsDisplay extends React.Component {
@@ -9,6 +9,7 @@ class ProductsDisplay extends React.Component {
 
         if(products !== undefined && products.length) {
 
+            // Filter the product array if user search the product
             if(searchKeyword !== '') {
                 filteredProduct = filteredProduct.filter((product) => {
 
@@ -17,8 +18,10 @@ class ProductsDisplay extends React.Component {
                 })
             } 
 
+            // Sort product array if user sort product
             const sortedList = _.sortBy(searchKeyword !== '' ? filteredProduct : products, sortBy);
 
+            // Return product list
             return sortedList.map((product) => {
                 return(
                     <React.Fragment>

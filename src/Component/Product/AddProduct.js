@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css';
 import AddProductModal from './AddProductModal';
-import AddAndEdittProductContainer from '../../Container/AddAndEdittProductContainer';
+import AddProductContainer from '../../Container/AddProductContainer';
 
 function AddProduct(){
 
@@ -22,7 +22,7 @@ function AddProduct(){
             <div id={'add'} className="modal">
                 <div className="modal-content">
                 <h4>Add Product information</h4>
-                <AddAndEdittProductContainer></AddAndEdittProductContainer>
+                <AddProductContainer></AddProductContainer>
                 </div>
             </div>
         </div>

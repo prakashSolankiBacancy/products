@@ -18,7 +18,6 @@ class AppView extends React.Component {
                 </Switch>
             </BrowserRouter>
         )
-        
     }
 }
 
