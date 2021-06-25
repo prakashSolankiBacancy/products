@@ -1,0 +1,16 @@
+export const Add_Product = 'Add Product';
+export const Add_Product_Info = 'Add Product information';
+export const Name = 'Name';
+export const Description = 'Description';
+export const Price = 'Price';
+export const Select_File = 'Select File';
+export const Close = 'close';
+export const error = 'error';
+export const Edit = 'edit';
+export const Search_Product = 'Search Product';
+export const Sort_By = 'Sort By';
+export const Delete = 'delete';
+export const Email = 'Email';
+export const Password = 'Password';
+export const Products = 'Products';
+export const Login = 'Login';

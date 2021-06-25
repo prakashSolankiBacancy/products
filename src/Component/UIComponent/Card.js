@@ -1,4 +1,5 @@
 import React from 'react';
+import { Delete } from '../../Utils/StringConstant';
 import EditProduct from '../Product/EditProduct';
 
 export default function Card({product, editProduct, deleteProduct}) {
@@ -19,7 +20,7 @@ export default function Card({product, editProduct, deleteProduct}) {
                     <div className="card-action">
                         <EditProduct product={product} editProduct={editProduct}></EditProduct>
                         <a  className={'secondary-content modal-trigger'} onClick={(e) => {deleteProduct(product.id)}} >
-                        <i className="material-icons teal-text right">delete</i>
+                        <i className="material-icons teal-text right">{Delete}</i>
                     </a>
                     </div>
                 </div>

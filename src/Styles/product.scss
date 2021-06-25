@@ -1,27 +1,12 @@
-.login-container {
-    margin: auto;
-    width: 600px;
-    padding-top: 100px;
-
-    input {
-        border-bottom-color: black;
-    } 
-    .login-btn {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between
-    }
-}
-
 .product-container {
     width: max-content;
     max-width: 50%;
     margin: auto;
 }
 
-// .radio-group {
-//     display: flex;
-// }
+.radio-group {
+    display: inherit;
+}
 
 .product-action{
     display: flex;
@@ -55,4 +40,15 @@
 .image-container{
     display: flex;
     justify-content: space-between;
+}
+
+.user-image {
+   img {
+    height: 40px;
+   }
+}
+
+.add-product{
+    margin-top: -50px;
+    margin-right: 25px;
 }

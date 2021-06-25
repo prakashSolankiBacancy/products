@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { Close, Description, error, Name, Price, Select_File } from "../../Utils/StringConstant";
 
 function AddProductModal({addProduct}) {
     const [description, setDescription] = useState('');
@@ -41,25 +41,25 @@ function AddProductModal({addProduct}) {
                 <div className="row">
                         <div className="input-field col s6">
                             <input id="name" type="text" value={name} className="validate" onChange={(e) => setName(e.target.value)} />
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name">{Name}</label>
                         </div>
                     </div>
                 <div className="row">
                     <div className="input-field col s6">
                         <input id="description" type="text" value={description}  className="validate" onChange={(e) => setDescription(e.target.value)}/>
-                        <label htmlFor="description">Description</label>
+                        <label htmlFor="description">{Description}</label>
                     </div>
                 </div>
                 <div className="row">
                         <div className="input-field col s6">
                             <input id="price" type="text" value={price} className="validate" onChange={(e) => setPrice(e.target.value)} />
-                            <label htmlFor="price">Price</label>
+                            <label htmlFor="price">{Price}</label>
                         </div>
                 </div>
                 <div className="row">
                     <div class="file-field input-field">
                         <div class="btn">
-                            <span>Select File</span>
+                            <span>{Select_File}</span>
                             <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
                         </div>
                         <div class="file-path-wrapper">
@@ -69,11 +69,11 @@ function AddProductModal({addProduct}) {
                 </div> 
                 <div className='right'>
                     <a className="waves-effect waves-light btn" style={{margin: '5px'}} onClick={onClick}>Add Product</a>
-                    <a href="#!" className="modal-close btn">close</a>
+                    <a href="#!" className="modal-close btn">{Close}</a>
                 </div>
                 { false &&
                     <div>
-                        <a href="#!"><i className='material-icons red-text'>error</i></a> <span>Team already exits</span>
+                        <a href="#!"><i className='material-icons red-text'>{error}</i></a> <span>Team already exits</span>
                     </div>
                 }
             </form>

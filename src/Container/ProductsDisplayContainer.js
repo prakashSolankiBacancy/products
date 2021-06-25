@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import ProductsDisplay from '../Component/Product/ProductsDisplay';
 
-// Here we separate the business logic and UI logic
+// To separate the business logic and UI logic
 
 /**
- * To pass products data as props in product modal component.
+ * To pass products data as props in product component.
  * @returns 
  * @param {*} state 
  */

@@ -28,10 +28,10 @@ export default function ProductsReducer(state = initProductsState, action)  {
         return {...state, products: updatedList};
 
       case 'DELETE':
-        const filterdList = state.products.filter((item) => {
+        const filterList = state.products.filter((item) => {
           return action.id !== item.id;
         })
-          return {...state, products: filterdList};
+          return {...state, products: filterList};
 
        default:
          return state;

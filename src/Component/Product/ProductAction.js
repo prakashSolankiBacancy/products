@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Search_Product, Sort_By } from '../../Utils/StringConstant';
 import Radio from '../UIComponent/Radio';
 
 function ProductAction({onFilterOrSearchChange}) {
@@ -46,12 +47,12 @@ function ProductAction({onFilterOrSearchChange}) {
                 <div className="row">
                     <div className="input-field col s12">
                         <input id="email" type="email" className="validate"  onChange={handleSearch} />
-                    <label for="email">Search Product</label>
+                    <label for="email">{Search_Product}</label>
                     </div>
                 </div>
             </div>
             <div className='radio-group '>
-                <p>Sort By :</p>
+                <p>{Sort_By} :</p>
                 {getRadioButtons()}
             </div>
            

@@ -6,6 +6,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext);
     const {  isAuthenticated } = authContext;
   
+
+  /**
+   * If the user not authenticated then redirect to login page
+   */
   return (
     <Route {...rest} render={props =>
       !isAuthenticated ? (

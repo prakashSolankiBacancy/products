@@ -13,6 +13,11 @@ class MainApp extends React.Component {
     }
   }
 
+    /**
+     * Handle the search and sort event
+     * @param {*} type ex- radio or search
+     * @param {*} value 
+     */
     onFilterOrSearchChange = (type, value) => {
       if(type === 'radio') {
         this.setState({

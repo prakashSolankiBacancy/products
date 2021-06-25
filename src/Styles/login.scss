@@ -1,0 +1,14 @@
+.login-container {
+    margin: auto;
+    width: 600px;
+    padding-top: 100px;
+
+    input {
+        border-bottom-color: black;
+    } 
+    .login-btn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between
+    }
+}

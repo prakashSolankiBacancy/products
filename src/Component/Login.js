@@ -2,6 +2,8 @@ import React from 'react';
 import "materialize-css/dist/css/materialize.min.css";
 import { GoogleLogin } from 'react-google-login';
 import  { AuthContext } from '../Context/LoggedUserContext';
+import { Email, Password } from '../Utils/StringConstant';
+import { isValidEmail, isValidPassword } from '../Utils/ValidationRegex';
 
 class Login extends React.Component {
     static contextType = AuthContext; 
@@ -13,7 +15,6 @@ class Login extends React.Component {
             clientId: '1059238656913-8j96fih0ev4iluqnra85lgfemqq469bf.apps.googleusercontent.com',
             showEmailError:  false,
             showPasswordError:  false,
-
         }
     }
 
@@ -21,7 +22,7 @@ class Login extends React.Component {
      * Handle the email input change
      * @param {*} value 
      */
-    handlEmailChange = (value) => {
+    handleEmailChange = (value) => {
         this.setState({
             email: value
         })
@@ -48,23 +49,21 @@ class Login extends React.Component {
      */
     handleSubmitEvent = (event) => {
         const { email, password } = this.state;
-        const emailRegex = /\S+@\S+\.\S+/;
-        const passwordRegex= /[A-Za-z0-9_*-]/;
-        const isValidEmail = emailRegex.test(email);
-        const isValidPass = passwordRegex.test(password);
+        const validEmail = isValidEmail(email);
+        const validPass = isValidPassword(password);
 
         /**
          * It will check the whether email and password are valid
          */
-        if( isValidEmail && isValidPass) {
+        if(validEmail && validPass) {
             // this.props.addLoggedInUserInfo({email});
             this.context.setAuth(true, {email})
             this.redirectToApp();
         }
 
         this.setState({
-            showEmailError: !isValidEmail,
-            showPasswordError: !isValidPass,
+            showEmailError: !validEmail,
+            showPasswordError: !validPass,
         })
     }
     
@@ -100,15 +99,15 @@ class Login extends React.Component {
                     <form className="col s12">
                         <div className="row  black-text text-darken-2">
                             <div className="input-field col s12">
-                                <input id="email"  type="text" onChange={(e) => this.handlEmailChange(e.target.value)} />
-                                { email === '' && <label for="email">Email</label>}
+                                <input id="email"  type="text" onChange={(e) => this.handleEmailChange(e.target.value)} />
+                                { email === '' && <label for="email">{Email}</label>}
                             </div>
                             { showEmailError &&  <a><i className='material-icons red-text left'>error</i> Please enter valid email.</a>}
                         </div>
                         <div className="row">
                             <div className="input-field col s12">
                                 <input id="password" type="text" onChange={(e) => this.handlePasswordChange(e.target.value)} />
-                                {password === '' &&  <label for="password" >Password</label>}
+                                {password === '' &&  <label for="password" >{Password}</label>}
                             </div>
                             { showPasswordError &&  <a><i className='material-icons red-text left'>error</i> Please enter valid password. </a>}
                         </div>

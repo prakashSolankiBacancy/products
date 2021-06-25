@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
 import AddProductModal from '../Component/Product/AddProductModal';
 
-// Here we separate the business logic and UI logic
+// To separate the business logic and UI logic
 
 /**
- * Here we can perform add or update action to on products
+ * to Perform add or update action on products
  * @param {*} dispatch 
  * @returns 
  */

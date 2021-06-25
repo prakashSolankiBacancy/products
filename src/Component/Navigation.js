@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "materialize-css/dist/css/materialize.min.css";
 import {
   Link
 } from "react-router-dom";
+import { AuthContext } from '../Context/LoggedUserContext';
+import { Login, Products } from '../Utils/StringConstant';
 
 
 function Navigation() {
+  const authContext = useContext(AuthContext);
+
   return ( 
     <div>
         <nav className="#26a69a teal lighten-1">
@@ -13,12 +17,12 @@ function Navigation() {
             <div className="nav-wrapper">
               <a href="#" className="brand-logo">
                 {" "}
-                <i className="material-icons">view_module</i>Products
+                <i className="material-icons">view_module</i>{Products}
               </a>
 
               <ul className="right">
                 <li>
-                  <Link to="/">Login</Link>
+                  <Link to="/">{Login}</Link>
                 </li>
                 <li>
                   <Link >Link1</Link>
@@ -27,7 +31,9 @@ function Navigation() {
                   <Link >Link2</Link>
                 </li>
                 <li>
-                  <a></a>
+                  <a className='btn-floating #26a69a teal darken-4 z-depth-0 user-image'>
+                     <img src={authContext.userObj.image} />
+                  </a>
                 </li>
               </ul>
             </div>
