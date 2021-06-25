@@ -1,8 +1,10 @@
 import React from 'react';
 import "materialize-css/dist/css/materialize.min.css";
 import { GoogleLogin } from 'react-google-login';
+import  { AuthContext } from '../Context/LoggedUserContext';
 
 class Login extends React.Component {
+    static contextType = AuthContext; 
     constructor(props) {
         super(props)
         this.state = {
@@ -55,6 +57,8 @@ class Login extends React.Component {
          * It will check the whether email and password are valid
          */
         if( isValidEmail && isValidPass) {
+            // this.props.addLoggedInUserInfo({email});
+            this.context.setAuth(true, {email})
             this.redirectToApp();
         }
 
@@ -69,8 +73,6 @@ class Login extends React.Component {
      * @param {*} res 
      */
     onSuccess = (res) => {
-        console.log('sucess: ',this.props,  res.Ys);
-
         const userObj = {};
         userObj.firstName = res.Ys.hU;
         userObj.lastName = res.Ys.dS;
@@ -78,12 +80,16 @@ class Login extends React.Component {
         userObj.email = res.Ys.It;
         userObj.image = res.Ys.gJ;
 
-        this.props.addLoggedInUserInfo(userObj)
+        // this.props.addLoggedInUserInfo(userObj);
+        this.context.setAuth(true, userObj);
         this.redirectToApp();
     }
 
     onFailure = (res) => {
-        
+        this.setState({
+            showPasswordError: true,
+            showEmailError: true,
+        })
     }
 
     render() {
@@ -102,7 +108,7 @@ class Login extends React.Component {
                         <div className="row">
                             <div className="input-field col s12">
                                 <input id="password" type="text" onChange={(e) => this.handlePasswordChange(e.target.value)} />
-                                {password === ''&&  <label for="password" >Password</label>}
+                                {password === '' &&  <label for="password" >Password</label>}
                             </div>
                             { showPasswordError &&  <a><i className='material-icons red-text left'>error</i> Please enter valid password. </a>}
                         </div>
@@ -116,7 +122,6 @@ class Login extends React.Component {
                                 onFailure={this.onFailure}
                                 cookiePolicy={'single_host_origin'}
                                 style={{ marginTop: '100px' }}
-                                // isSignedIn={true}
                             />
                         </div>
                        
