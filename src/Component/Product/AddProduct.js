@@ -9,10 +9,10 @@ function AddProduct(){
         // In materialized CSS, Modal is javascript component so for further use modal we have to initialize that
         var modalElement = document.querySelector('#add');
              M.Modal.init(modalElement, {
-                edge: "left",
+                edge: 'left',
                 inDuration: 250
             });
-    })
+    });
 
     return (
         <div>

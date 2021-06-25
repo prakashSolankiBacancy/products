@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Close, Description, error, Name, Price, Select_File } from "../../Utils/StringConstant";
+import React from 'react';
+import { useState } from 'react';
+import { Close, Description, error, Name, Price, Select_File } from '../../Utils/StringConstant';
 
 function EditProductModal({product, editProduct}) {
     const [description, setDescription] = useState(product.description);
@@ -14,32 +15,32 @@ function EditProductModal({product, editProduct}) {
             var reader = new FileReader();
             let base64String;
             reader.onload = function () {
-                base64String = reader.result.replace("data:", "")
-                    .replace(/^.+,/, "");
+                base64String = reader.result.replace('data:', '')
+                    .replace(/^.+,/, '');
                 setEncodedFile(base64String);
-            }
+            };
             reader.readAsDataURL(file);
         }
-    }
+    };
 
-    const onClick = (event) => {
+    const onClick = () => {
         if(isFormValid()) {
-            editProduct({id: product.id, name, description, price, encodedFile: file})
+            editProduct({id: product.id, name, description, price, encodedFile: file});
 
             // clear the form data
             var modalElement = document.querySelector('#file');
             modalElement.value = null;
-            setDescription(''); setName(''); setPrice('');setFile('')
+            setDescription(''); setName(''); setPrice('');setFile('');
         }
-    }
+    };
 
      //  Return true id form have valid data
     const isFormValid = () => {
         if(description !== '' && name !== '' && parseInt(price) > 0) {
-            return true
+            return true;
         } 
         return false;
-    }
+    };
 
     return ( 
         <div className="row">
@@ -47,34 +48,34 @@ function EditProductModal({product, editProduct}) {
                 <div className="row">
                         <div className="group col s6">
                             <input id="name" type="text" value={name} className="validate" onChange={(e) => setName(e.target.value)} />
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
                             <label htmlFor="name">{Name}</label>
                         </div>
                     </div>
                 <div className="row">
                     <div className="group ">
-                        <input id="description" type="text" value={description}  className="validate" onChange={(e) => setDescription(e.target.value)}/>
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                        <input id="description" type="text" value={description} className="validate" onChange={(e) => setDescription(e.target.value)}/>
+                        <span className="highlight"></span>
+                        <span className="bar"></span>
                         <label>{Description}</label>
                     </div>
                 </div>
                 <div className="row">
-                    <div class="group s6">      
+                    <div className="group s6">      
                         <input id="price" value={price} type="text" onChange={(e) => setPrice(e.target.value)} />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                        <span className="highlight"></span>
+                        <span className="bar"></span>
                         <label>{Price}</label>
                     </div>
                 </div>
                 <div className="row">
-                    <div class="file-field input-field image-container">
-                        <div class="btn">
+                    <div className="file-field input-field image-container">
+                        <div className="btn">
                             <span>{Select_File}</span>
                             <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
-                            <div class="file-path-wrapper">
-                            <input  id='file' class="file-path validate" type="text" />
+                            <div className="file-path-wrapper">
+                            <input id='file' className="file-path validate" type="text" />
                         </div>
                         </div>
                         
@@ -97,5 +98,7 @@ function EditProductModal({product, editProduct}) {
          </div>
         );
 }
+
+
  
 export default EditProductModal;

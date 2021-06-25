@@ -11,14 +11,14 @@ import ProductsDisplay from '../Component/Product/ProductsDisplay';
 const mapStateToProps = (state) => {
     return {
        products: state.ProductsReducer.products,
-    }
-}
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       editProduct: (productObj) => {dispatch({type: 'EDIT', payload: productObj})},
-       deleteProduct: (id) => {dispatch({type: 'DELETE', id})}
-    }
-}
+       editProduct: (productObj) => {dispatch({type: 'EDIT', payload: productObj});},
+       deleteProduct: (id) => {dispatch({type: 'DELETE', id});}
+    };
+};
 
-export default connect(mapStateToProps,  mapDispatchToProps)(ProductsDisplay);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsDisplay);

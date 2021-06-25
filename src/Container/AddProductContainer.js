@@ -10,8 +10,8 @@ import AddProductModal from '../Component/Product/AddProductModal';
  */
 const mapDispatchToProps = (dispatch) => {
     return {
-      addProduct: (product) => { dispatch({ type: 'ADD', payload: product })},
-    }
-}
+      addProduct: (product) => { dispatch({ type: 'ADD', payload: product });},
+    };
+};
 
-export default connect(null,  mapDispatchToProps)(AddProductModal);
+export default connect(null, mapDispatchToProps)(AddProductModal);

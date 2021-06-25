@@ -3,7 +3,7 @@
  */
 const initProductsState = {
   products: [],
-}
+};
 
 /**
  * To store products information and alter the data  
@@ -11,7 +11,7 @@ const initProductsState = {
  * @param {*} action
  * @returns 
  */
-export default function ProductsReducer(state = initProductsState, action)  {
+export default function ProductsReducer(state = initProductsState, action) {
     switch(action.type) {
        case 'ADD':
        action.payload.id = state.products.length + 1;
@@ -24,16 +24,16 @@ export default function ProductsReducer(state = initProductsState, action)  {
         } else { 
           return item;
         }
-      })
+      });
         return {...state, products: updatedList};
 
       case 'DELETE':
         const filterList = state.products.filter((item) => {
           return action.id !== item.id;
-        })
+        });
           return {...state, products: filterList};
 
        default:
          return state;
      }
-  };
+  }

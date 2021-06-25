@@ -5,7 +5,7 @@ import Radio from '../UIComponent/Radio';
 function ProductAction({onFilterOrSearchChange}) {
     const [radioButtons, setRadioButtons] = useState([
         {name: 'name', checked: false },
-        {name: 'description',  checked:false},
+        {name: 'description', checked:false},
         {name: 'price', checked: false}
     ]);
 
@@ -16,38 +16,38 @@ function ProductAction({onFilterOrSearchChange}) {
                 radio.checked = !radio.checked;
                 return radio;
             } else {
-                 radio.checked ? radio.checked = false : radio.checked = radio.checked
+                 radio.checked ? radio.checked = false : radio.checked;
                 return radio;
             }
         });
        
         setRadioButtons(updatedList);
-        onFilterOrSearchChange('radio', selectedValue)
-    }
+        onFilterOrSearchChange('radio', selectedValue);
+    };
 
     // Iterate the radio button array and return the JSX code
     const getRadioButtons = () => {
-       return  radioButtons.map((radio) => {
+       return radioButtons.map((radio) => {
             return(
                 <div key={radio.name}>
                     <Radio option={radio} onChange={onChange}></Radio>
                 </div>
-            )
-        })
-    }
+            );
+        });
+    };
 
     // Handle search event while user searching over product display page
     const handleSearch = (event) => {
-        onFilterOrSearchChange('search', event.target.value)
-      }
+        onFilterOrSearchChange('search', event.target.value);
+      };
     
     return (
         <div className='product-action'>
             <div>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input id="email" type="email" className="validate"  onChange={handleSearch} />
-                    <label for="email">{Search_Product}</label>
+                        <input id="email" type="email" className="validate" onChange={handleSearch} />
+                    <label htmlFor="email">{Search_Product}</label>
                     </div>
                 </div>
             </div>

@@ -1,12 +1,11 @@
-import React, { useContext , useEffect} from 'react';
-import { Route, Redirect } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import { AuthContext } from '../../Context/LoggedUserContext';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const authContext = useContext(AuthContext);
-    const {  isAuthenticated } = authContext;
+    const {isAuthenticated } = authContext;
   
-
   /**
    * If the user not authenticated then redirect to login page
    */
@@ -21,4 +20,5 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     />
   );
 };
+
 export default PrivateRoute;

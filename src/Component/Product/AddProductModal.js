@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Close, Description, error, Name, Price, Select_File } from "../../Utils/StringConstant";
+import React from 'react';
+import { useState } from 'react';
+import { Close, Description, error, Name, Price, Select_File } from '../../Utils/StringConstant';
 
 function AddProductModal({addProduct}) {
     const [description, setDescription] = useState('');
@@ -7,35 +8,36 @@ function AddProductModal({addProduct}) {
     const [price, setPrice] = useState('');
     const [file, setFile] = useState();
    
-    const onClick = (event) => {
+    const onClick = () => {
         if(isFormValid()) {
             // Convert image into base64
             var reader = new FileReader();
             let base64String;
             reader.onload = function () {
-                base64String = reader.result.replace("data:", "")
-                    .replace(/^.+,/, "");
+                base64String = reader.result.replace('data:', '')
+                    .replace(/^.+,/, '');
 
                 addProduct({name, description, price, encodedFile: base64String});
-            }
+            };
             reader.readAsDataURL(file);
             var modalElement = document.querySelector('#file');
 
             // clear the form data
             modalElement.value = null;
-            setDescription(''); setName(''); setPrice('');setFile('')
+            setDescription(''); setName(''); setPrice('');setFile('');
         }
-    }
+    };
 
     //  Return true id form have valid data
     const isFormValid = () => {
         if(description !== '' && name !== '' && parseInt(price) > 0 && file) {
-            return true
+            return true;
         } 
         return false;
-    }
+    };
 
     return ( 
+        // eslint-disable-next-line react/react-in-jsx-scope
         <div className="row">
             <form className="col s12">
                 <div className="row">
@@ -46,7 +48,7 @@ function AddProductModal({addProduct}) {
                     </div>
                 <div className="row">
                     <div className="input-field col s6">
-                        <input id="description" type="text" value={description}  className="validate" onChange={(e) => setDescription(e.target.value)}/>
+                        <input id="description" type="text" value={description} className="validate" onChange={(e) => setDescription(e.target.value)}/>
                         <label htmlFor="description">{Description}</label>
                     </div>
                 </div>
@@ -57,13 +59,13 @@ function AddProductModal({addProduct}) {
                         </div>
                 </div>
                 <div className="row">
-                    <div class="file-field input-field">
-                        <div class="btn">
+                    <div className="file-field input-field">
+                        <div className="btn">
                             <span>{Select_File}</span>
                             <input type="file" onChange={(e) => setFile(e.target.files[0])}/>
                         </div>
-                        <div class="file-path-wrapper">
-                            <input  id='file' class="file-path validate" type="text" />
+                        <div className="file-path-wrapper">
+                            <input id='file' className="file-path validate" type="text" />
                         </div>
                     </div>
                 </div> 

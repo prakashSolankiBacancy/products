@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import "materialize-css/dist/css/materialize.min.css";
+import 'materialize-css/dist/css/materialize.min.css';
 import {
   Link
-} from "react-router-dom";
+} from 'react-router-dom';
 import { AuthContext } from '../Context/LoggedUserContext';
 import { Login, Products } from '../Utils/StringConstant';
 
@@ -16,7 +16,7 @@ function Navigation() {
           <div className="container">
             <div className="nav-wrapper">
               <a href="#" className="brand-logo">
-                {" "}
+                {' '}
                 <i className="material-icons">view_module</i>{Products}
               </a>
 
@@ -40,7 +40,7 @@ function Navigation() {
           </div>
         </nav>
     </div>
-  )
+  );
 }
 
 export default Navigation;

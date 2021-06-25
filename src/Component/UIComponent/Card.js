@@ -19,12 +19,12 @@ export default function Card({product, editProduct, deleteProduct}) {
                     </div>
                     <div className="card-action">
                         <EditProduct product={product} editProduct={editProduct}></EditProduct>
-                        <a  className={'secondary-content modal-trigger'} onClick={(e) => {deleteProduct(product.id)}} >
+                        <a className={'secondary-content modal-trigger'} onClick={() => { deleteProduct(product.id); }} >
                         <i className="material-icons teal-text right">{Delete}</i>
                     </a>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
