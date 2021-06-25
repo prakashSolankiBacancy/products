@@ -1,2 +1,2 @@
 import './login.scss';
-import './product.scss'
+import './product.scss';

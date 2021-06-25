@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../UIComponent/Card';
-const _ = require("lodash"); 
+const _ = require('lodash'); 
 
 class ProductsDisplay extends React.Component {
     getProductsList = () => {
@@ -15,7 +15,7 @@ class ProductsDisplay extends React.Component {
 
                     return ( (product.name.toLowerCase().search(searchKeyword.toLowerCase()) >= 0)||
                             (product.description.toLowerCase().search(searchKeyword.toLowerCase()) >= 0));
-                })
+                });
             } 
 
             // Sort product array if user sort product
@@ -24,11 +24,11 @@ class ProductsDisplay extends React.Component {
             // Return product list
             return sortedList.map((product) => {
                 return(
-                    <React.Fragment>
+                    <React.Fragment key={product.name}>
                         <Card product={product} editProduct={editProduct} deleteProduct={deleteProduct}></Card>
                     </React.Fragment>
-                )
-            })
+                );
+            });
         }
     }
 
